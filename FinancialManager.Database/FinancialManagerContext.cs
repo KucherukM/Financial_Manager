@@ -7,16 +7,6 @@ namespace FinancialManagerApp.Models
     {
         public FinancialManagerContext(DbContextOptions<FinancialManagerContext> options) : base(options) { }
 
-        public FinancialManagerContext() { }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=FInancialManagerDB;Integrated Security=True;Connect Timeout=2;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-            }
-        }
-
         public DbSet<User> Users { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Category> Categories { get; set; }
@@ -37,7 +27,7 @@ namespace FinancialManagerApp.Models
                 .HasOne(t => t.Category)
                 .WithMany(c => c.Transactions)
                 .HasForeignKey(t => t.CategoryId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Transaction>()
                 .HasOne(t => t.Account)
@@ -55,7 +45,7 @@ namespace FinancialManagerApp.Models
                 .HasOne(b => b.User)
                 .WithMany(u => u.Budgets)
                 .HasForeignKey(b => b.UserId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
