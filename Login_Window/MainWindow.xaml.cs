@@ -26,7 +26,6 @@ namespace Login_Window
 
         {
 
-            InitializeComponent();
 
         }
 
