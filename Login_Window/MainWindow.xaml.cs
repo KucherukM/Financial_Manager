@@ -26,7 +26,7 @@ namespace Login_Window
 
         {
 
-
+            
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -36,7 +36,38 @@ namespace Login_Window
             MessageBox.Show("Registration button clicked.");
 
         }
-
+        private void RemoveText(object sender, RoutedEventArgs e)
+        {
+            if (UsernameTextBox.Text == "Username or Email")
+            {
+                UsernameTextBox.Text = "";
+                UsernameTextBox.Foreground = Brushes.Black;
+            }
+        }
+        private void AddText(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(UsernameTextBox.Text))
+            {
+                UsernameTextBox.Text = "Username or Email";
+                UsernameTextBox.Foreground = Brushes.Gray;
+            }
+        }
+        private void RemovePasswordText(object sender, RoutedEventArgs e)
+        {
+            if (PasswordBox.Password == "Password")
+            {
+                PasswordBox.Clear();
+                PasswordBox.Foreground = Brushes.Black;
+            }
+        }
+        private void AddPasswordText(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(PasswordBox.Password))
+            {
+                PasswordBox.Password = "Password";
+                PasswordBox.Foreground = Brushes.Gray;
+            }
+        }
     }
 
     public class LengthToOpacityConverter : IValueConverter

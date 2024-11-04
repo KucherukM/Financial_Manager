@@ -3,53 +3,64 @@
        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
        xmlns:local="clr-namespace:Login_Window"
        Title="MainWindow" Height="450" Width="800"
-       Background="#006A67">
+       Background="Black">
     <Window.Resources>
         <local:LengthToOpacityConverter x:Key="LengthToOpacityConverter" />
+        <Style TargetType="TextBox" x:Key="PlaceholderStyle">
+            <Style.Triggers>
+                <Trigger Property="Text" Value="">
+                    <Setter Property="Tag" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="Text" Value="{x:Null}">
+                    <Setter Property="Tag" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="Tag" Value="Visible">
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Grid>
+        <StackPanel>
+            <Image Source="/Image/adrien-olichon-RCAhiGJsUUE-unsplash.jpg"/>
+        </StackPanel>
         <TextBlock Text="Manager finance"
-                  FontSize="36"
+                  FontSize="39"
                   FontWeight="Bold"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Top"
                   Margin="0,20,0,0"
-                  Foreground="Black" />
+                  Foreground="White" />
         <TextBlock Text="Login"
                   FontSize="28"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Top"
                   Margin="0,80,0,0"
-                  Foreground="Black" />
+                  Foreground="White" />
+        <!-- Username Field -->
         <Grid Margin="100,140,100,0" VerticalAlignment="Top">
-            <TextBlock Text="Username or Email"
-                      FontSize="14"
-                      Foreground="Gray"
-                      VerticalAlignment="Center"
-                      Margin="10,0,0,0"
-                      IsHitTestVisible="False"
-                      Opacity="{Binding ElementName=UsernameTextBox, Path=Text.Length, Converter={StaticResource LengthToOpacityConverter}}" />
             <TextBox x:Name="UsernameTextBox"
-                    Margin="0"
-                    Height="40"
+                    Text="Username or Email"
                     FontSize="14"
+                    Height="40"
                     Padding="10,0"
-                    VerticalContentAlignment="Center" />
+                    VerticalContentAlignment="Center"
+                    Foreground="Gray"
+                    GotFocus="RemoveText"
+                    LostFocus="AddText"
+                    Style="{StaticResource PlaceholderStyle}" />
         </Grid>
+        <!-- Password Field -->
         <Grid Margin="100,200,100,0" VerticalAlignment="Top">
-            <TextBlock Text="Password"
-                      FontSize="14"
-                      Foreground="Gray"
-                      VerticalAlignment="Center"
-                      Margin="10,0,0,0"
-                      IsHitTestVisible="False"
-                      Opacity="{Binding ElementName=PasswordBox, Path=Password.Length, Converter={StaticResource LengthToOpacityConverter}}" />
             <PasswordBox x:Name="PasswordBox"
-                        Margin="0"
-                        Height="40"
+                        Password="Password"
                         FontSize="14"
+                        Height="40"
                         Padding="10,0"
-                        VerticalContentAlignment="Center" />
+                        VerticalContentAlignment="Center"
+                        Foreground="Gray"
+                        GotFocus="RemovePasswordText"
+                        LostFocus="AddPasswordText" />
         </Grid>
         <Button Content="Button login"
                HorizontalAlignment="Center"
@@ -57,27 +68,30 @@
                Margin="0,280,0,0"
                Width="200"
                Height="40"
+               Foreground="#FFF4B7"
                Background="Transparent"
-               BorderBrush="Black"
-               FontSize="16"
+               BorderBrush="White"
+               FontSize="20"
                FontWeight="Bold" />
         <StackPanel Orientation="Horizontal"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Bottom"
                    Margin="0,0,0,30">
             <TextBlock Text="Not a member yet?"
-                      FontSize="14"
+                      FontSize="18"
                       VerticalAlignment="Center"
-                      Foreground="Black" />
+                      Foreground="White"
+                      FontWeight="Bold"/>
             <Button Content="Register!"
-                   FontSize="14"
+                   FontSize="18"
                    Foreground="#FFF4B7"
                    Background="Transparent"
                    BorderBrush="Transparent"
                    VerticalAlignment="Center"
                    Padding="0"
                    Cursor="Hand"
-                   Click="RegisterButton_Click" />
+                   Click="RegisterButton_Click"
+                   FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </Window>
