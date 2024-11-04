@@ -54,7 +54,7 @@
             </Button>
 
             <!-- Кнопка Categories -->
-            <Button Grid.Column="2" Margin="10,10,10,298">
+            <Button Click="Button_Click_1" Grid.Column="2" Margin="10,10,10,298">
                 <StackPanel>
                     <Image Source="Images/categories.png" Width="50" Height="50"/>
                     <TextBlock Text="Categories" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
