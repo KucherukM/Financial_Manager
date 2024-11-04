@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using ClientApp.Entities;
+using FinancialManagerApp.Models;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +22,7 @@ namespace RegistrationWindowApp
         public MainWindow()
         {
             InitializeComponent();
+            FinancialManagerContext dbContext = new FinancialManagerContext();
         }
 
         private void FullnameTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -77,6 +80,8 @@ namespace RegistrationWindowApp
             {
                 MessageBox.Show("Invalid password");
             }
+            User user = new User()
+            { Username = username, Email = email, PasswordHash = password };
         }
     }
 }
