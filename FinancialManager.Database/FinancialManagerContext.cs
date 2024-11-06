@@ -6,7 +6,7 @@ namespace FinancialManagerApp.Models
     public class FinancialManagerContext : DbContext
     {
         public FinancialManagerContext(DbContextOptions<FinancialManagerContext> options) : base(options) { }
-
+        public FinancialManagerContext() { }
         public DbSet<User> Users { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Category> Categories { get; set; }
