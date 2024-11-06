@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="800">
+    
     <Grid Margin="10">
 
         <!-- Левая панель -->
@@ -58,6 +59,18 @@
                 <StackPanel>
                     <Image Source="Images/categories.png" Width="50" Height="50"/>
                     <TextBlock Text="Categories" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+            </Button>
+            <Button Click="Register" Grid.Column="2" Margin="278,10,-258,369">
+                <StackPanel>
+                    
+                    <TextBlock Text="Register" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+            </Button>
+            <Button Click="Login"  Grid.Column="2" Margin="163,10,-143,369">
+                <StackPanel>
+
+                    <TextBlock Text="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 </StackPanel>
             </Button>
         </Grid>

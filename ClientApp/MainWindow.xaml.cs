@@ -67,5 +67,16 @@ namespace ClientApp
                 MessageBox.Show($"Помилка з'єднання з базою даних: {ex.Message}");
             }
         }
+        private void Register(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow1 Register = new RegisterWindow1();
+            Register.ShowDialog();
+
+        }
+        private void Login(object sender, RoutedEventArgs e)
+        {
+            Window1 Login = new Window1();
+            Login.ShowDialog();
+        }
     }
 }
