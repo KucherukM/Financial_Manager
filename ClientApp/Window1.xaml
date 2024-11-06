@@ -1,0 +1,100 @@
+﻿<Window x:Class="ClientApp.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientApp"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800"
+        Background="Black">
+    <Window.Resources>
+        
+        <Style TargetType="TextBox" x:Key="PlaceholderStyle">
+            <Style.Triggers>
+                <Trigger Property="Text" Value="">
+                    <Setter Property="Tag" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="Text" Value="{x:Null}">
+                    <Setter Property="Tag" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="Tag" Value="Visible">
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <Image Source="/Images/adrien-olichon-RCAhiGJsUUE-unsplash.jpg"/>
+        </StackPanel>
+        <TextBlock Text="Manager finance"
+                  FontSize="39"
+                  FontWeight="Bold"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Top"
+                  Margin="0,20,0,0"
+                  Foreground="White" />
+        <TextBlock Text="Login"
+                  FontSize="28"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Top"
+                  Margin="0,80,0,0"
+                  Foreground="White" />
+        <!-- Username Field -->
+        <Grid Margin="100,140,100,0" VerticalAlignment="Top">
+            <TextBox x:Name="UsernameTextBox"
+                    Text="Username or Email"
+                    FontSize="14"
+                    Height="40"
+                    Padding="10,0"
+                    VerticalContentAlignment="Center"
+                    Foreground="Gray"
+                    GotFocus="RemoveText"
+              
+                    Style="{StaticResource PlaceholderStyle}" />
+        </Grid>
+        <!-- Password Field -->
+        <Grid Margin="100,200,100,0" VerticalAlignment="Top">
+            <PasswordBox x:Name="PasswordBox"
+                        Password="Password"
+                        FontSize="14"
+                        Height="40"
+                        Padding="10,0"
+                        VerticalContentAlignment="Center"
+                        Foreground="Gray"
+                        GotFocus="RemovePasswordText"
+                         />
+        </Grid>
+        <Button Content=" Login"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Margin="0,280,0,0"
+               Width="200"
+               Height="40"
+               Foreground="#FFF4B7"
+               Background="Transparent"
+               BorderBrush="White"
+               FontSize="20"
+               FontWeight="Bold" />
+        <StackPanel Orientation="Horizontal"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   Margin="0,0,0,30">
+            <TextBlock Text="Not a member yet?"
+                      FontSize="18"
+                      VerticalAlignment="Center"
+                      Foreground="White"
+                      FontWeight="Bold"/>
+            <Button Content="Register!"
+                   FontSize="18"
+                   Foreground="#FFF4B7"
+                   Background="Transparent"
+                   BorderBrush="Transparent"
+                   VerticalAlignment="Center"
+                   Padding="0"
+                   Cursor="Hand"
+                   Click="RegisterButton_Click"
+                   FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</Window>

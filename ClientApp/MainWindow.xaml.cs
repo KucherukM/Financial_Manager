@@ -73,5 +73,10 @@ namespace ClientApp
             Register.ShowDialog();
 
         }
+        private void Login(object sender, RoutedEventArgs e)
+        {
+            Window1 Login = new Window1();
+            Login.ShowDialog();
+        }
     }
 }

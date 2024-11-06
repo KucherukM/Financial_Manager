@@ -67,7 +67,7 @@
                     <TextBlock Text="Register" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 </StackPanel>
             </Button>
-            <Button  Grid.Column="2" Margin="163,10,-143,369">
+            <Button Click="Login"  Grid.Column="2" Margin="163,10,-143,369">
                 <StackPanel>
 
                     <TextBlock Text="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
