@@ -37,18 +37,15 @@
             <RowDefinition Height="45"></RowDefinition>
             <RowDefinition Height="45"></RowDefinition>
             <RowDefinition Height="45"></RowDefinition>
-            <!--<RowDefinition Height="45"></RowDefinition>-->
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Column="1" Grid.Row="1" FontSize="40" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center">Register</Label>
         <TextBox Grid.Column="1" Grid.Row="2" x:Name="FullnameTextBox" TextChanged="FullnameTextBox_TextChanged"/>
         <TextBox Grid.Column="1" Grid.Row="3" x:Name="EmailTextBox" TextChanged="EmailTextBox_TextChanged"/>
-        <!--<TextBox Grid.Column="1" Grid.Row="4" x:Name="PhoneTextBox" TextChanged="PhoneTextBox_TextChanged"/>-->
         <TextBox Grid.Column="1" Grid.Row="4" x:Name="PasswordTextBox" TextChanged="PasswordTextBox_TextChanged"/>
         <TextBlock Grid.Column="1" Grid.Row="2" x:Name="FullnameTextBlock" Text="Username"/>
         <TextBlock Grid.Column="1" Grid.Row="3" x:Name="EmailTextBlock" Text="E-mail"/>
-        <!--<TextBlock Grid.Column="1" Grid.Row="4" x:Name="PhoneTextBlock" Text="Phone"/>-->
         <TextBlock Grid.Column="1" Grid.Row="4" x:Name="PasswordTextBlock" Text="Password"/>
         <Button Grid.Column="1" Grid.Row="5" Click="ButtonRegister" FontSize="17" FontWeight="Bold" Margin="70,30" BorderBrush="black" BorderThickness="3,1" ClickMode="Press">Register</Button>
     </Grid>
