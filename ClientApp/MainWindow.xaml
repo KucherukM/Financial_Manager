@@ -63,14 +63,14 @@
             </Button>
             <Button Click="Register" Grid.Column="2" Margin="278,10,-258,369">
                 <StackPanel>
-                    
-                    <TextBlock Text="Register" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+
+                    <TextBlock x:Name="RegisterTextBlock" Text="Register" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 </StackPanel>
             </Button>
-            <Button Click="Login"  Grid.Column="2" Margin="163,10,-143,369">
+            <Button Click="Login" Grid.Column="2" Margin="163,10,-143,369">
                 <StackPanel>
 
-                    <TextBlock Text="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                    <TextBlock x:Name="LoginTextBlock" Text="Login" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
                 </StackPanel>
             </Button>
         </Grid>

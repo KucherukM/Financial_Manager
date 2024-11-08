@@ -75,6 +75,7 @@
                Background="Transparent"
                BorderBrush="White"
                FontSize="20"
+               Click="LoginButton_Click"
                FontWeight="Bold" />
         <StackPanel Orientation="Horizontal"
                    HorizontalAlignment="Center"

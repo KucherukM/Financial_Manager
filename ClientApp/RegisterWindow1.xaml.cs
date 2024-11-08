@@ -84,10 +84,11 @@ namespace ClientApp
             });
             
             dbContext.SaveChanges();
+            MessageBox.Show("You have been successfully registered. Please log in to continue.");
+
             Window1 login = new Window1();
             this.Close();
             login.ShowDialog();
-            MessageBox.Show("You have been successfully registered. Please log in to continue.");
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClientApp;
+using ClientApp.Entities;
 using FinancialManagerApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -71,7 +72,6 @@ namespace ClientApp
         {
             RegisterWindow1 Register = new RegisterWindow1();
             Register.ShowDialog();
-
         }
         private void Login(object sender, RoutedEventArgs e)
         {
