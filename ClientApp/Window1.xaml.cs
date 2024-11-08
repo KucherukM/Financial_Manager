@@ -1,8 +1,13 @@
-﻿using System;
+﻿using ClientApp.Entities;
+using FinancialManagerApp.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +25,10 @@ namespace ClientApp
     /// </summary>
     public partial class Window1 : Window
     {
+        FinancialManagerContext dbContext = new FinancialManagerContext();
+
+        public static User LoginedUser { get; set; } = null;
+
         public Window1()
         {
             InitializeComponent();
@@ -32,6 +41,33 @@ namespace ClientApp
             this.Close();
             Register.ShowDialog();
             
+
+        }
+        public void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            string username = UsernameTextBox.Text.Trim();
+            string password = PasswordBox.Password.Trim();
+            bool isValidData = false;
+
+            if (string.IsNullOrEmpty(username)) MessageBox.Show("Username cannot be empty.");
+            else if (username.Contains(' ')) MessageBox.Show("Username must not contain spaces.");
+            else if (password.Length < 8) MessageBox.Show("Password must be at least 8 characters long.");
+            else if (!Regex.IsMatch(password, @"^[a-zA-Z0-9]+$")) MessageBox.Show("Password must contain only letters and numbers.");
+            else isValidData = true;
+            if (!isValidData) return;
+
+            User user = dbContext.Users.FirstOrDefault(u => u.Username == UsernameTextBox.Text);
+            if (user == null)
+            {
+                MessageBox.Show("No user found.");
+                return;
+            }
+            if (user.PasswordHash == password)
+            {
+                LoginedUser = user;
+            }
+            this.Close();
 
         }
         private void RemoveText(object sender, RoutedEventArgs e)
