@@ -40,7 +40,9 @@ namespace ClientApp
 
         public MainWindow()
         {
+
             InitializeComponent();
+            this.Title = Window1.LoginedUser.Username;
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();
@@ -59,15 +61,8 @@ namespace ClientApp
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var userCount = _context.Users.Count();
-                MessageBox.Show($"Успішне з'єднання! Кількість користувачів: {userCount}");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Помилка з'єднання з базою даних: {ex.Message}");
-            }
+           Categories categories = new Categories();
+            categories.ShowDialog();
         }
         private void Register(object sender, RoutedEventArgs e)
         {
