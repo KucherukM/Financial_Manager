@@ -63,10 +63,15 @@ namespace ClientApp
                 MessageBox.Show("No user found.");
                 return;
             }
+
             if (user.PasswordHash == password)
             {
                 LoginedUser = user;
             }
+            else { MessageBox.Show("incorect password"); return; } 
+            MessageBox.Show($"Succesfull login");
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
 
         }

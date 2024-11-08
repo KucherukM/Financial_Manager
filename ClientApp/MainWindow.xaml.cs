@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -70,13 +71,26 @@ namespace ClientApp
         }
         private void Register(object sender, RoutedEventArgs e)
         {
-            RegisterWindow1 Register = new RegisterWindow1();
-            Register.ShowDialog();
+            
+            if(MessageBox.Show("Title","Are you sure",MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Window1 Login = new Window1();
+                this.Close();
+                Login.ShowDialog();
+
+                _context.Users.Remove(Window1.LoginedUser);
+                _context.SaveChanges();
+
+                Window1.LoginedUser = null;
+            }
+                
         }
         private void Login(object sender, RoutedEventArgs e)
         {
             Window1 Login = new Window1();
+            this.Close();
             Login.ShowDialog();
+            Window1.LoginedUser = null;
         }
     }
 }
