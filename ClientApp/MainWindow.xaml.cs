@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,7 @@ namespace ClientApp
     public partial class MainWindow : Window
     {
         private readonly FinancialManagerContext _context;
+        public ObservableCollection<Transaction> Transactions { get; set; }
 
         public MainWindow()
         {
@@ -45,6 +47,10 @@ namespace ClientApp
             ConfigureServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();
             _context = serviceProvider.GetRequiredService<FinancialManagerContext>();
+            Transactions = new ObservableCollection<Transaction>();
+            DataContext = this;
+            LoadTransactions();
+
         }
         private void ConfigureServices(IServiceCollection services)
         {
@@ -53,6 +59,34 @@ namespace ClientApp
             services.AddDbContext<FinancialManagerContext>(options =>
                 options.UseSqlServer(connectionString));
         }
+        private async void LoadTransactions()
+        {
+            try
+            {
+                if (Window1.LoginedUser == null)
+                {
+                    MessageBox.Show("Користувач не залогінений.");
+                    return;
+                }
+
+                var transactionsFromDb = await _context.Transactions
+                    .Where(t => t.UserId == Window1.LoginedUser.UserId)
+                    .Include(t => t.Category)
+                    .ToListAsync();
+
+                
+
+                foreach (var transaction in transactionsFromDb)
+                {
+                    Transactions.Add(transaction);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Помилка при завантаженні транзакцій: {ex.Message}");
+            }
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
