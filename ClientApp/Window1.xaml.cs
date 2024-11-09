@@ -46,28 +46,20 @@ namespace ClientApp
         public void LoginButton_Click(object sender, RoutedEventArgs e)
         {
 
-            string username = UsernameTextBox.Text.Trim();
+            string email_username = UsernameTextBox.Text.Trim();
             string password = PasswordBox.Password.Trim();
             bool isValidData = false;
 
-            if (string.IsNullOrEmpty(username)) MessageBox.Show("Username cannot be empty.");
-            else if (username.Contains(' ')) MessageBox.Show("Username must not contain spaces.");
-            else if (password.Length < 8) MessageBox.Show("Password must be at least 8 characters long.");
-            else if (!Regex.IsMatch(password, @"^[a-zA-Z0-9]+$")) MessageBox.Show("Password must contain only letters and numbers.");
-            else isValidData = true;
-            if (!isValidData) return;
+            User nameUser = dbContext.Users.FirstOrDefault(u => u.Username == email_username);
+            User emailUser = dbContext.Users.FirstOrDefault(u => u.Email == email_username);
 
-            User user = dbContext.Users.FirstOrDefault(u => u.Username == UsernameTextBox.Text);
-            if (user == null)
+            if (emailUser == null && nameUser == null)
             {
                 MessageBox.Show("No user found.");
                 return;
             }
-
-            if (user.PasswordHash == password)
-            {
-                LoginedUser = user;
-            }
+            if (emailUser?.PasswordHash == password) LoginedUser = emailUser;
+            else if (nameUser?.PasswordHash == password) LoginedUser = nameUser;
             else { MessageBox.Show("incorect password"); return; } 
             MessageBox.Show($"Succesfull login");
             MainWindow mainWindow = new MainWindow();
