@@ -1,8 +1,10 @@
 ﻿using ClientApp.Entities;
 using FinancialManagerApp.Models;
+using Microsoft.Identity.Client.NativeInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -76,6 +78,17 @@ namespace ClientApp
 
             if (!isValidData) return;
 
+            VerificationWindow._expectedCode = GenerateCode(8);
+            SendCode(email, VerificationWindow._expectedCode);
+            VerificationWindow verification = new VerificationWindow();
+            verification.ShowDialog();
+
+            if (VerificationWindow._expectedCode != VerificationWindow._VerificationCodeTextBox)
+            {
+                MessageBox.Show("_____________");
+                return;
+            }
+
             dbContext.Users.Add(new User()
             {
                 Username = username,
@@ -89,6 +102,49 @@ namespace ClientApp
             Window1 login = new Window1();
             this.Close();
             login.ShowDialog();
+        }
+
+
+
+
+
+
+        private void SendCode(string toEmail, string code)
+        {
+            var fromAddress = new MailAddress("financialmanager14022@gmail.com", "Фінансовий Менеджер");
+            var toAddress = new MailAddress(toEmail);
+            const string fromPassword = "ensf ceio xwkq wfut";
+            const string subject = "Код реєстрації";
+            string body = $"Ваш код реєстрації: {code}";
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
+        }
+        public string GenerateCode(int length)
+        {
+            Random random = new Random();
+            string code = "";
+            for (int i = 0; i < length; i++)
+            {
+                code += random.Next(0, 10).ToString();  
+            }
+            return code;
         }
     }
 }
