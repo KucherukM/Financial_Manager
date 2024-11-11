@@ -139,8 +139,9 @@ namespace ClientApp
                 return;
             }
             AddTransactionWindow transactionWindow = new AddTransactionWindow();
-            this.Close();
+            
             transactionWindow.ShowDialog();
+            LoadTransactions();
         }
     }
 }
