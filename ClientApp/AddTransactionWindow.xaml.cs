@@ -123,9 +123,9 @@ namespace ClientApp
             dbContext.SaveChanges();
             MessageBox.Show("Transaction successfully added.");
 
-            MainWindow mainWindow = new MainWindow();
+            
             this.Close();
-            mainWindow.ShowDialog();
+            
         }
     }
 }

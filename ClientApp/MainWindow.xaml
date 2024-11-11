@@ -103,8 +103,6 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-
-            <!-- Кнопка Diagrams -->
             <Button Grid.Column="0" Margin="10">
                 <StackPanel>
                     <Image Source="diagrams.png" Width="50" Height="50" VerticalAlignment="Center"/>
