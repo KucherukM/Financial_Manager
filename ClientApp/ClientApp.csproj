@@ -20,6 +20,8 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+    <None Remove="Images\6065488.png" />
     <None Remove="Images\balance.png" />
     <None Remove="Images\budget.png" />
     <None Remove="Images\categories.png" />
@@ -30,6 +32,9 @@
 </ItemGroup>
 
 <ItemGroup>
+    <Resource Include="Images\6065488.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\balance.png">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>

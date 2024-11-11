@@ -9,7 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using ClientApp;
 using ClientApp.Entities;
 using FinancialManagerApp.Models;
+using GalaSoft.MvvmLight.Command;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,7 +42,7 @@ namespace ClientApp
         private readonly FinancialManagerContext _context;
         public ObservableCollection<Transaction> Transactions { get; set; }
         FinancialManagerContext dbContext = new FinancialManagerContext();
-
+        public ICommand EditTransactionCommand { get; }
         public MainWindow()
         {
             InitializeComponent();
@@ -51,9 +52,22 @@ namespace ClientApp
             var serviceProvider = serviceCollection.BuildServiceProvider();
             _context = serviceProvider.GetRequiredService<FinancialManagerContext>();
             Transactions = new ObservableCollection<Transaction>();
+            EditTransactionCommand = new RelayCommand<Transaction>(ExecuteEditTransaction);
             DataContext = this;
             LoadTransactions();
 
+        }
+        private void ExecuteEditTransaction(Transaction transaction)
+        {
+            if (transaction == null)
+                return;
+
+            EditTransactionWindow editTransactionWindow = new EditTransactionWindow(transaction);
+            if (editTransactionWindow.ShowDialog() == true)
+            {
+                // Assuming SaveChanges() is called in the edit window, otherwise, call it here.
+                LoadTransactions(); // Reload to update the view
+            }
         }
         private void ConfigureServices(IServiceCollection services)
         {
@@ -89,7 +103,7 @@ namespace ClientApp
                 MessageBox.Show($"Помилка при завантаженні транзакцій: {ex.Message}");
             }
         }
-
+       
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="540" Width="800">
+        Title="MainWindow" Height="540" Width="800"
+        >
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
@@ -23,13 +24,27 @@
 
                 <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="5">
                     <ScrollViewer VerticalScrollBarVisibility="Visible" Height="310">
-                        <ListBox ItemsSource="{Binding Transactions}" Background="WhiteSmoke" BorderThickness="0" IsHitTestVisible="False">
+                        <ListBox ItemsSource="{Binding Transactions}" Background="WhiteSmoke" BorderThickness="0">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="10" Margin="0,0,0,5">
-                                        <StackPanel Orientation="Vertical" IsHitTestVisible="False">
+                                    <Grid Margin="5">
+                                        <!-- Removed Padding, replaced with Margin -->
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Category Column -->
+                                        <StackPanel Orientation="Vertical" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0">
+                                            <!-- Adjusted margin for spacing -->
                                             <TextBlock Text="{Binding Category.Name}" FontWeight="Bold" FontSize="14" />
-                                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                            <TextBlock Text="{Binding Note}" Foreground="Gray" FontSize="12" Margin="0,5,0,0" />
+                                        </StackPanel>
+
+                                        <!-- Amount and Date Column -->
+                                        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center">
+                                            <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="Сума: " FontWeight="SemiBold" />
                                                 <TextBlock Text="{Binding Amount, StringFormat='{}{0:C}'}" />
                                             </StackPanel>
@@ -37,12 +52,21 @@
                                                 <TextBlock Text="Дата: " FontWeight="SemiBold" />
                                                 <TextBlock Text="{Binding Date, StringFormat='{}{0:dd-MM-yyyy}'}" />
                                             </StackPanel>
-                                            <TextBlock Text="{Binding Note}" Foreground="Gray" FontSize="12" Margin="0,5,0,0"/>
                                         </StackPanel>
-                                    </Border>
+
+                                        <!-- Edit Button -->
+                                        <Button x:Name="Edit" Background="Aqua" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Command="{Binding DataContext.EditTransactionCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                        CommandParameter="{Binding}" Click="Edit_Click">
+                                            <StackPanel>
+                                                <Image Source=".\Images\6065488.png" Width="30" Height="30"/>
+                                            </StackPanel>
+                                        </Button>
+                                    </Grid>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
+
                     </ScrollViewer>
                 </Border>
             </StackPanel>
