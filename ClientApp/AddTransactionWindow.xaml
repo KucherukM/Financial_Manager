@@ -1,0 +1,70 @@
+﻿<Window x:Class="ClientApp.AddTransactionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientApp"
+        mc:Ignorable="d"
+        Title="AddTransaction" Height="400" Width="600">
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="13,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="19"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="11,1"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="30,0"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="19"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Opacity" Value="0.7"/>
+            <Setter Property="IsHitTestVisible" Value="False"/>
+        </Style>
+    </Window.Resources>
+    <Grid Background="BlanchedAlmond">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="444.4"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+            <RowDefinition Height="1.2*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="1" Grid.Row="1" FontSize="40" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center">Transaction</Label>
+
+        <ComboBox Grid.Column="1" Grid.Row="2" x:Name="categoryComboBox" Margin="25,10"></ComboBox>
+        
+        <TextBox Grid.Column="1" Grid.Row="3" x:Name="AmountTextBox" TextChanged="AmountTextBox_TextChanged"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" x:Name="AmountTextBlock" Text="Amount"/>
+        
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="2.5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Content="Date :" FontSize="19" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"></Label>
+            <DatePicker x:Name="datePicker" Grid.Column="1" VerticalAlignment="Center" Margin="50,0" SelectedDateChanged="datePicker_SelectedDateChanged"></DatePicker>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="50,0">
+                <ComboBox x:Name="dayComboBox" Width="70"/>
+                <ComboBox x:Name="monthComboBox" Width="77"/>
+                <ComboBox x:Name="yearComboBox" Width="70"/>
+            </StackPanel>
+        </Grid>
+        
+        <TextBox Grid.Column="1" Grid.Row="5" x:Name="NoteTextBox" TextChanged="NoteTextBox_TextChanged"/>
+        <TextBlock Grid.Column="1" Grid.Row="5" x:Name="NoteTextBlock" Text="Note"/>
+        
+        <Button Grid.Column="1" Grid.Row="6" Click="Button_Click" FontSize="17" FontWeight="Bold" Margin="70,30" BorderBrush="black" BorderThickness="3,1" ClickMode="Press">Add Transaction</Button>
+    </Grid>
+</Window>

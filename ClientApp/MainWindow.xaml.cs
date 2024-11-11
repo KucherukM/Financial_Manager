@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
@@ -39,10 +40,12 @@ namespace ClientApp
     {
         private readonly FinancialManagerContext _context;
         public ObservableCollection<Transaction> Transactions { get; set; }
+        FinancialManagerContext dbContext = new FinancialManagerContext();
 
         public MainWindow()
         {
             InitializeComponent();
+            this.Title = Window1.LoginedUser.Username;
             var serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
             var serviceProvider = serviceCollection.BuildServiceProvider();
@@ -125,6 +128,19 @@ namespace ClientApp
             this.Close();
             Login.ShowDialog();
             Window1.LoginedUser = null;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            List<Category> categories = dbContext.Categories.ToList();
+            if (categories == null || categories.Count == 0)
+            {
+                MessageBox.Show("No categories found. Please add categories.");
+                return;
+            }
+            AddTransactionWindow transactionWindow = new AddTransactionWindow();
+            this.Close();
+            transactionWindow.ShowDialog();
         }
     }
 }
