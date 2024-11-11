@@ -1,0 +1,67 @@
+﻿<Window x:Class="Categories_Window.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Categories_Window"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!-- Header -->
+    <Grid Grid.Row="0" Background="black" Height="60">
+        <TextBlock Text="Categories" Foreground="White" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+    </Grid>
+    <!-- Content with TabControl -->
+    <TabControl Grid.Row="1" Background="Transparent">
+        <!-- Expenses Tab -->
+        <TabItem Header="Expenses">
+            <ScrollViewer>
+                <StackPanel Margin="20">
+                    <!-- Daily Section -->
+                        <TextBlock Text="Daily" FontSize="15" FontWeight="Bold" Margin="0 10 0 5"/>
+                    <WrapPanel>
+                        <Button Content="Services" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Social" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Phone" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Medical" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Transport" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Groceries" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Shopping" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Food" Width="120" Margin="5" Background="#DDD"/>
+                    </WrapPanel>
+                    <!-- Activities Section -->
+                        <TextBlock Text="Activities" FontSize="15" FontWeight="Bold" Margin="0 20 0 5"/>
+                    <WrapPanel>
+                        <Button Content="Office" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Education" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Books" Width="120" Margin="5" Background="#DDD"/>
+                    </WrapPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+        <!-- Income Tab -->
+        <TabItem Header="Income">
+            <ScrollViewer>
+                <StackPanel Margin="20">
+                    <!-- Income Categories -->
+                        <TextBlock Text="Income Categories" FontSize="15" FontWeight="Bold" Margin="0 10 0 5"/>
+                    <WrapPanel>
+                        <Button Content="Salary" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Investments" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Freelance" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Gifts" Width="120" Margin="5" Background="#DDD"/>
+                        <Button Content="Others" Width="120" Margin="5" Background="#DDD"/>
+                    </WrapPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
+    </TabControl>
+    <!-- Add Category Button -->
+        <Button Grid.Row="2" Content="Add Category" Background="black" FontSize="15" Foreground="White" Margin="20" Padding="10" FontWeight="Bold"/>
+    </Grid>
+</Window>
