@@ -23,7 +23,7 @@
 
                 <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="5">
                     <ScrollViewer VerticalScrollBarVisibility="Visible" Height="310">
-                        <ListBox ItemsSource="{Binding Transactions}" Background="WhiteSmoke" BorderThickness="0">
+                        <ListBox x:Name="TransactionListView" ItemsSource="{Binding Transactions}" Background="WhiteSmoke" BorderThickness="0">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderBrush="LightGray" BorderThickness="0,0,0,1" Padding="10" Margin="0,0,0,5">
@@ -42,7 +42,7 @@
                                             </StackPanel>
                                             <StackPanel>
                                                 <Button Content="Del" Width="25" Height="25" Margin="0,3" Click="DeleteTransaction_Click" CommandParameter="{Binding}" />
-                                                <Button Content="Edit" Width="25" Height="25" Margin="0,3" Command="{Binding EditCommand}" CommandParameter="{Binding}" />
+                                                <Button Content="Edit" Width="25" Height="25" Margin="0,3" Click="EditTransactionButton_Click" CommandParameter="{Binding}" />
                                             </StackPanel>
                                         </StackPanel>
                                     </Border>

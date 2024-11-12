@@ -162,5 +162,19 @@ namespace ClientApp
                 }
             }
         }
+
+        private void EditTransactionButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.CommandParameter is Transaction selectedTransaction)
+            {
+                EditTransactionWindow editWindow = new EditTransactionWindow(selectedTransaction, dbContext);
+
+                editWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a transaction to edit.");
+            }
+        }
     }
 }
