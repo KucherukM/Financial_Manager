@@ -39,7 +39,7 @@ namespace ClientApp
     public partial class MainWindow : Window
     {
         private readonly FinancialManagerContext _context;
-        public ObservableCollection<Transaction> Transactions { get; set; }
+        public static ObservableCollection<Transaction> Transactions { get; set; }
         FinancialManagerContext dbContext = new FinancialManagerContext();
 
         public MainWindow()
@@ -76,8 +76,6 @@ namespace ClientApp
                     .Where(t => t.UserId == Window1.LoginedUser.UserId)
                     .Include(t => t.Category)
                     .ToListAsync();
-
-                
 
                 foreach (var transaction in transactionsFromDb)
                 {
@@ -119,6 +117,7 @@ namespace ClientApp
                 _context.SaveChanges();
 
                 Window1.LoginedUser = null;
+                Transactions = new ObservableCollection<Transaction>();
             }
                 
         }
@@ -141,7 +140,27 @@ namespace ClientApp
             AddTransactionWindow transactionWindow = new AddTransactionWindow();
             
             transactionWindow.ShowDialog();
-            LoadTransactions();
+        }
+
+        private void DeleteTransaction_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.CommandParameter is Transaction transaction)
+            {
+                if (MessageBox.Show("Ви впевнені, що хочете видалити цю транзакцію?", "Підтвердження", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        _context.Transactions.Remove(transaction);
+                        _context.SaveChanges();
+
+                        Transactions.Remove(transaction);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Помилка при видаленні транзакції: {ex.Message}");
+                    }
+                }
+            }
         }
     }
 }

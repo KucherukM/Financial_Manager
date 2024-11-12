@@ -110,7 +110,7 @@ namespace ClientApp
             }
 
             DateTime date = new DateTime(year, month, day);
-            dbContext.Transactions.Add(new Transaction()
+            Transaction transaction = new Transaction()
             {
                 Amount = amount,
                 Date = date,
@@ -118,9 +118,11 @@ namespace ClientApp
                 UserId = Window1.LoginedUser.UserId,
                 CategoryId = selectedCategoryId,
                 AccountId = dbContext.Accounts.FirstOrDefault(a => a.UserId == Window1.LoginedUser.UserId).AccountId
-            });
+            };
 
+            dbContext.Transactions.Add(transaction);
             dbContext.SaveChanges();
+            MainWindow.Transactions.Add(transaction);
             MessageBox.Show("Transaction successfully added.");
 
             
