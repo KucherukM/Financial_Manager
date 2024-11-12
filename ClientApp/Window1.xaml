@@ -8,7 +8,7 @@
         Title="Window1" Height="450" Width="800"
         Background="Black">
     <Window.Resources>
-        
+
         <Style TargetType="TextBox" x:Key="PlaceholderStyle">
             <Style.Triggers>
                 <Trigger Property="Text" Value="">
@@ -42,6 +42,10 @@
                   Foreground="White" />
         <!-- Username Field -->
         <Grid Margin="100,140,100,0" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
             <TextBox x:Name="UsernameTextBox"
                     Text="Username or Email"
                     FontSize="14"
@@ -51,7 +55,7 @@
                     Foreground="Gray"
                     GotFocus="RemoveText"
               
-                    Style="{StaticResource PlaceholderStyle}" />
+                    Style="{StaticResource PlaceholderStyle}" Grid.RowSpan="2" />
         </Grid>
         <!-- Password Field -->
         <Grid Margin="100,200,100,0" VerticalAlignment="Top">
