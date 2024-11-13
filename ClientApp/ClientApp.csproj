@@ -20,9 +20,14 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <None Remove="Images\adrien-olichon-RCAhiGJsUUE-unsplash.jpg" />
     <None Remove="Images\balance.png" />
     <None Remove="Images\budget.png" />
     <None Remove="Images\categories.png" />
+</ItemGroup>
+
+<ItemGroup>
+  <Resource Include="Images\adrien-olichon-RCAhiGJsUUE-unsplash.jpg" />
 </ItemGroup>
 
 <ItemGroup>

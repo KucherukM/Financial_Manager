@@ -6,7 +6,14 @@
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
         Title="MainWindow" Height="540" Width="800">
-
+    <Grid>
+        <Image Source="/Images/adrien-olichon-RCAhiGJsUUE-unsplash.jpg"
+              Stretch="Fill"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch"
+              Grid.RowSpan="3"
+              Grid.ColumnSpan="3"/>
+        
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="350"></ColumnDefinition>
@@ -19,7 +26,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" Margin="20" Height="360">
-                <TextBlock Text="Список транзакцій" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" />
+                    <TextBlock Text="List of Transactions" FontSize="20" Foreground="#FFF4B7" FontWeight="Bold" Margin="0,0,0,10" />
 
                 <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="5">
                     <ScrollViewer VerticalScrollBarVisibility="Visible" Height="310">
@@ -46,7 +53,7 @@
                     </ScrollViewer>
                 </Border>
             </StackPanel>
-            <Button Grid.Row="1" Width="200" Height="40" VerticalAlignment="Top" Margin="10" HorizontalAlignment="Center" Click="Button_Click_2">
+                <Button Grid.Row="1" FontWeight="Bold" Width="200" Height="40" VerticalAlignment="Top" Margin="10" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White" HorizontalAlignment="Center" Click="Button_Click_2">
                 <TextBlock FontSize="16">Add new Transaction</TextBlock>
             </Button>
         </Grid>
@@ -59,25 +66,25 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Button Height="120" Width="80">
+                <Button Height="120" Width="80" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White">
                 <StackPanel>
                     <Image Source="Images/budget.png" Width="50" Height="50" VerticalAlignment="Top"/>
-                    <TextBlock Text="Budget" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBlock Text="Budget" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
                 </StackPanel>
             </Button>
 
 
-            <Button Grid.Row="1" Height="120" Width="80">
+                <Button Grid.Row="1" Height="120" Width="80" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White">
                 <StackPanel>
                     <Image Source="Images/balance.png" Width="50" Height="50"/>
-                    <TextBlock Text="Balance" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBlock Text="Balance" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
                 </StackPanel>
             </Button>
 
-            <Button Click="Button_Click_1" Grid.Row="2" Height="120" Width="80">
+                <Button Click="Button_Click_1" Grid.Row="2" Height="120" Width="80" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White">
                 <StackPanel>
                     <Image Source="Images/categories.png" Width="50" Height="50"/>
-                    <TextBlock Text="Categories" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBlock Text="Categories" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
                 </StackPanel>
             </Button>
         </Grid>
@@ -86,14 +93,14 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Click="Register" Margin="10">
+                <Button Click="Register" Margin="10" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White">
                 <StackPanel>
-                    <TextBlock x:Name="RegisterTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"><Run Language="en-gb" Text="Delete"/></TextBlock>
+                        <TextBlock x:Name="RegisterTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20"><Run Language="en-gb" Text="Delete"/></TextBlock>
                 </StackPanel>
             </Button>
-            <Button Click="Login" Grid.Column="1" Margin="10">
+                <Button Click="Login" Grid.Column="1" Margin="10" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White">
                 <StackPanel>
-                    <TextBlock x:Name="LoginTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"><Run Language="en-gb" Text="Exit"/></TextBlock>
+                        <TextBlock x:Name="LoginTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20"><Run Language="en-gb" Text="Exit"/></TextBlock>
                 </StackPanel>
             </Button>
         </Grid>
@@ -103,20 +110,21 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Margin="10">
+                <Button Grid.Column="0" Margin="10" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White">
                 <StackPanel>
                     <Image Source="diagrams.png" Width="50" Height="50" VerticalAlignment="Center"/>
-                    <TextBlock Text="Diagrams" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBlock Text="Diagrams" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="19"/>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Column="1" Margin="10">
+                <Button Grid.Column="1" Margin="10" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White">
                 <StackPanel>
                     <Image Source="settings.png" Width="50" Height="50" VerticalAlignment="Center"/>
-                    <TextBlock Text="Settings" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"/>
+                        <TextBlock Text="Settings" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="19"/>
                 </StackPanel>
             </Button>
         </Grid>
 
+        </Grid>
     </Grid>
 </Window>

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp"
         mc:Ignorable="d"
-        Title="RegisterWindow1" Height="450" Width="800">
+        Title="RegisterWindow1" Height="450" Width="800"
+        Background="black">
     <Window.Resources>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="5"/>
@@ -13,19 +14,22 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="19"/>
             <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="BorderThickness" Value="11,1"/>
-            <Setter Property="BorderBrush" Value="black"/>
+            
         </Style>
+    
         <Style TargetType="TextBlock">
             <Setter Property="Margin" Value="30,0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="19"/>
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="Opacity" Value="0.7"/>
+            <Setter Property="Foreground" Value="gray"/>
             <Setter Property="IsHitTestVisible" Value="False"/>
         </Style>
     </Window.Resources>
     <Grid>
+        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="444.4"></ColumnDefinition>
@@ -40,13 +44,14 @@
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Grid.Column="1" Grid.Row="1" FontSize="40" FontWeight="DemiBold" VerticalAlignment="Center" HorizontalAlignment="Center">Register</Label>
+        <Image Source="/Images/adrien-olichon-RCAhiGJsUUE-unsplash.jpg" Stretch="Fill" Grid.RowSpan="7" Grid.ColumnSpan="3"/>
+        <Label Grid.Column="1" Grid.Row="1" FontSize="40" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White">Register</Label>
         <TextBox Grid.Column="1" Grid.Row="2" x:Name="FullnameTextBox" TextChanged="FullnameTextBox_TextChanged"/>
         <TextBox Grid.Column="1" Grid.Row="3" x:Name="EmailTextBox" TextChanged="EmailTextBox_TextChanged"/>
         <TextBox Grid.Column="1" Grid.Row="4" x:Name="PasswordTextBox" TextChanged="PasswordTextBox_TextChanged"/>
         <TextBlock Grid.Column="1" Grid.Row="2" x:Name="FullnameTextBlock" Text="Username"/>
         <TextBlock Grid.Column="1" Grid.Row="3" x:Name="EmailTextBlock" Text="E-mail"/>
         <TextBlock Grid.Column="1" Grid.Row="4" x:Name="PasswordTextBlock" Text="Password"/>
-        <Button Grid.Column="1" Grid.Row="5" Click="ButtonRegister" FontSize="17" FontWeight="Bold" Margin="70,30" BorderBrush="black" BorderThickness="3,1" ClickMode="Press">Register</Button>
+        <Button Grid.Column="1" Grid.Row="5" Click="ButtonRegister" FontSize="20" FontWeight="Bold" Margin="70,30" BorderBrush="white" Background="Transparent" Foreground="#FFF4B7" BorderThickness="3,1" ClickMode="Press">Register</Button>
     </Grid>
 </Window>
