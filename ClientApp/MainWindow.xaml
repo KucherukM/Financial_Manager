@@ -54,7 +54,15 @@
                 </Border>
             </StackPanel>
                 <Button Grid.Row="1" FontWeight="Bold" Width="200" Height="40" VerticalAlignment="Top" Margin="10" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White" HorizontalAlignment="Center" Click="Button_Click_2">
-                <TextBlock FontSize="16">Add new Transaction</TextBlock>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <TextBlock FontSize="16">Add new Transaction</TextBlock>
             </Button>
         </Grid>
 
@@ -71,7 +79,15 @@
                     <Image Source="Images/budget.png" Width="50" Height="50" VerticalAlignment="Top"/>
                         <TextBlock Text="Budget" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
                 </StackPanel>
-            </Button>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
 
                 <Button Grid.Row="1" Height="120" Width="80" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White">
@@ -79,14 +95,30 @@
                     <Image Source="Images/balance.png" Width="50" Height="50"/>
                         <TextBlock Text="Balance" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
                 </StackPanel>
-            </Button>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
                 <Button Click="Button_Click_1" Grid.Row="2" Height="120" Width="80" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White">
                 <StackPanel>
                     <Image Source="Images/categories.png" Width="50" Height="50"/>
                         <TextBlock Text="Categories" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"/>
                 </StackPanel>
-            </Button>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
         </Grid>
         <Grid Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Height="80" Width="264">
             <Grid.ColumnDefinitions>
@@ -97,12 +129,28 @@
                 <StackPanel>
                         <TextBlock x:Name="RegisterTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20"><Run Language="en-gb" Text="Delete"/></TextBlock>
                 </StackPanel>
-            </Button>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
                 <Button Click="Login" Grid.Column="1" Margin="10" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White">
                 <StackPanel>
                         <TextBlock x:Name="LoginTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20"><Run Language="en-gb" Text="Exit"/></TextBlock>
                 </StackPanel>
-            </Button>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
         </Grid>
 
         <Grid Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="118" Width="264">
@@ -115,14 +163,30 @@
                     <Image Source="diagrams.png" Width="50" Height="50" VerticalAlignment="Center"/>
                         <TextBlock Text="Diagrams" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="19"/>
                 </StackPanel>
-            </Button>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
                 <Button Grid.Column="1" Margin="10" Background="Transparent" Foreground="#FFF4B7" BorderBrush="White">
                 <StackPanel>
                     <Image Source="settings.png" Width="50" Height="50" VerticalAlignment="Center"/>
                         <TextBlock Text="Settings" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="19"/>
                 </StackPanel>
-            </Button>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}"
+BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="10">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
         </Grid>
 
         </Grid>
