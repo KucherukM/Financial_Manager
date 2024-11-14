@@ -34,16 +34,19 @@ namespace ClientApp
         }
         private void LoadDays()
         {
+            dayComboBox.Items.Clear();
             for (int i = 1; i <= 31; i++)
                 dayComboBox.Items.Add(i);
         }
         private void LoadMonths()
         {
+            monthComboBox.Items.Clear();
             for (int i = 1; i <= 12; i++)
                 monthComboBox.Items.Add(i);
         }
         private void LoadYears()
         {
+            yearComboBox.Items.Clear();
             for (int i = DateTime.Now.Year - 20; i <= DateTime.Now.Year; i++)
                 yearComboBox.Items.Add(i);
         }
@@ -93,6 +96,8 @@ namespace ClientApp
                 return;
             }
 
+            _context.Transactions.Remove(_transaction);
+
             MainWindow.Transactions.Remove(_transaction);
             _transaction.Amount = amount;
             _transaction.Date = DatePicker.SelectedDate ?? DateTime.Now;
@@ -100,7 +105,8 @@ namespace ClientApp
             _transaction.CategoryId = (int)(CategoryComboBox.SelectedValue ?? 0);
             MainWindow.Transactions.Add(_transaction);
 
-            
+            _context.Transactions.Add(_transaction);
+
             _context.SaveChanges();
             this.DialogResult = true;
             this.Close();

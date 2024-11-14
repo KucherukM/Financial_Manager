@@ -56,9 +56,15 @@
             <Label Content="Date :" FontSize="19" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"></Label>
             <DatePicker x:Name="DatePicker" Grid.Column="1" VerticalAlignment="Center" Margin="50,0" SelectedDateChanged="datePicker_SelectedDateChanged"></DatePicker>
             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="50,0">
-                <ComboBox x:Name="dayComboBox" Width="70"/>
-                <ComboBox x:Name="monthComboBox" Width="77"/>
-                <ComboBox x:Name="yearComboBox" Width="70"/>
+                <ComboBox x:Name="dayComboBox" Width="70">
+                    
+                </ComboBox>
+                <ComboBox x:Name="monthComboBox" Width="77">
+                
+                </ComboBox>
+                <ComboBox x:Name="yearComboBox" Width="70">
+            
+                </ComboBox>
             </StackPanel>
         </Grid>
 
