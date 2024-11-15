@@ -8,8 +8,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AddCategory\AddCategory.csproj" />
-  </ItemGroup>
-
 </Project>
