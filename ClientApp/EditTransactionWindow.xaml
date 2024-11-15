@@ -56,15 +56,24 @@
             <Label Content="Date :" FontSize="19" FontWeight="Bold" VerticalContentAlignment="Center" HorizontalContentAlignment="Right"></Label>
             <DatePicker x:Name="DatePicker" Grid.Column="1" VerticalAlignment="Center" Margin="50,0" SelectedDateChanged="datePicker_SelectedDateChanged"></DatePicker>
             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="50,0">
-                <ComboBox x:Name="dayComboBox" Width="70">
-                    
-                </ComboBox>
-                <ComboBox x:Name="monthComboBox" Width="77">
-                
-                </ComboBox>
-                <ComboBox x:Name="yearComboBox" Width="70">
-            
-                </ComboBox>
+                <ComboBox x:Name="dayComboBox" Width="70"
+                          ItemsSource="{Binding days_list}"
+                          SelectedItem="{Binding Days}"
+                          IsSynchronizedWithCurrentItem="True"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="Name"/>
+                <ComboBox x:Name="monthComboBox" Width="77"
+                          ItemsSource="{Binding months_list}"
+                          SelectedItem="{Binding Months}"
+                          IsSynchronizedWithCurrentItem="True"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="Name"/>
+                <ComboBox x:Name="yearComboBox" Width="70"
+                          ItemsSource="{Binding years_list}"
+                          SelectedItem="{Binding Years}"
+                          IsSynchronizedWithCurrentItem="True"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="Name"/>
             </StackPanel>
         </Grid>
 
@@ -79,6 +88,7 @@
             <Button Grid.Column="1" Click="SaveButton_Click" FontSize="17" FontWeight="Bold" Height="40" Margin="15,0,60,0" BorderBrush="black" BorderThickness="3,1">Save</Button>
             <Button Click="CancelButton_Click" FontSize="17" FontWeight="Bold" Height="40" Margin="60,0,15,0" BorderBrush="black" BorderThickness="3,1">Cancel</Button>
         </Grid>
+        <TextBlock FontSize="1" Visibility="Hidden" x:Name="CategoryBox"></TextBlock>
         
     </Grid>
 </Window>  

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +14,33 @@ namespace ClientApp
     {
         private Transaction _transaction;
         private FinancialManagerContext _context;
+        public class Date
+        {
+            public Date(int value) { Name = value.ToString(); DateValue = value; }
+            public string Name { get; set; }
+            public int DateValue { get; set; }
+        }
+        public List<Date> days_list = new List<Date>();
+        public List<Date> months_list = new List<Date>();
+        public List<Date> years_list = new List<Date>();
+        private Date _days;
+        private Date _months;
+        private Date _years;
+        public int Days
+        {
+            get { return _days.DateValue; }
+            set { _days = new Date(value); }
+        }
+        public int Months
+        {
+            get { return _months.DateValue; }
+            set { _months = new Date(value); }
+        }
+        public int Years
+        {
+            get { return _years.DateValue; }
+            set { _years = new Date(value); }
+        }
 
         public EditTransactionWindow(Transaction transaction, FinancialManagerContext context)
         {
@@ -28,27 +56,40 @@ namespace ClientApp
 
         private void LoadCategories()
         {
+            CategoryBox.Text = _transaction.Category.CategoryId.ToString();
             CategoryComboBox.ItemsSource = _context.Categories.ToList();
             CategoryComboBox.DisplayMemberPath = "Name";
             CategoryComboBox.SelectedValuePath = "Id";
         }
         private void LoadDays()
         {
-            dayComboBox.Items.Clear();
+            //dayComboBox.Items.Clear();
             for (int i = 1; i <= 31; i++)
-                dayComboBox.Items.Add(i);
+            {
+                //dayComboBox.Items.Add(i);
+                days_list.Add(new Date(i));
+            }
+            dayComboBox.ItemsSource = days_list;
         }
         private void LoadMonths()
         {
-            monthComboBox.Items.Clear();
+            //monthComboBox.Items.Clear();
             for (int i = 1; i <= 12; i++)
-                monthComboBox.Items.Add(i);
+            {
+                //monthComboBox.Items.Add(i);
+                months_list.Add(new Date(i));
+            }
+            monthComboBox.ItemsSource = months_list;
         }
         private void LoadYears()
         {
-            yearComboBox.Items.Clear();
+            //yearComboBox.Items.Clear();
             for (int i = DateTime.Now.Year - 20; i <= DateTime.Now.Year; i++)
-                yearComboBox.Items.Add(i);
+            {
+                //yearComboBox.Items.Add(i);
+                years_list.Add(new Date(i));
+            }
+            yearComboBox.ItemsSource = years_list;
         }
 
         private void datePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -58,14 +99,17 @@ namespace ClientApp
             if (datePicker.SelectedDate.HasValue)
             {
                 DateTime selectedDate = datePicker.SelectedDate.Value;
-                dayComboBox.SelectedItem = selectedDate.Day;
-                monthComboBox.SelectedItem = selectedDate.Month;
-                yearComboBox.SelectedItem = selectedDate.Year;
+                Days = selectedDate.Day;
+                Months = selectedDate.Month;
+                Years = selectedDate.Year;
             }
         }
 
         private void LoadTransactionData()
         {
+            Days = _transaction.Date.Day;
+            Months = _transaction.Date.Month;
+            Years = _transaction.Date.Year;
             AmountTextBox.Text = _transaction.Amount.ToString("F2");
             DatePicker.SelectedDate = _transaction.Date;
             NoteTextBox.Text = _transaction.Note;
@@ -73,7 +117,7 @@ namespace ClientApp
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (CategoryComboBox.SelectedItem == null)
+            if (string.IsNullOrEmpty(CategoryBox.Text))
             {
                 MessageBox.Show("Please select a category.");
                 return;
@@ -102,7 +146,7 @@ namespace ClientApp
             _transaction.Amount = amount;
             _transaction.Date = DatePicker.SelectedDate ?? DateTime.Now;
             _transaction.Note = NoteTextBox.Text;
-            _transaction.CategoryId = (int)(CategoryComboBox.SelectedValue ?? 0);
+            _transaction.CategoryId = (int)(CategoryComboBox.SelectedValue == null ? CategoryComboBox.SelectedValue : CategoryBox.Text);
             MainWindow.Transactions.Add(_transaction);
 
             _context.Transactions.Add(_transaction);
@@ -110,6 +154,7 @@ namespace ClientApp
             _context.SaveChanges();
             this.DialogResult = true;
             this.Close();
+
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
