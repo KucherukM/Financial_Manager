@@ -149,6 +149,7 @@ namespace ClientApp
             _transaction.CategoryId = (int)(CategoryComboBox.SelectedValue == null ? CategoryComboBox.SelectedValue : CategoryBox.Text);
             MainWindow.Transactions.Add(_transaction);
 
+
             _context.Transactions.Add(_transaction);
 
             _context.SaveChanges();
